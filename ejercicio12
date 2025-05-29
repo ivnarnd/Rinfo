@@ -1,0 +1,35 @@
+{Programe al robot para que recorra todas las calles depositando en cada esquina vacía
+un papel. En caso de no tener más papeles debe continuar el recorrido (sin depositar).}
+
+programa ejercicio12
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    derecha
+    repetir 99
+      repetir 99
+        si(~(HayPapelEnLaEsquina))
+          si(HayPapelEnLaBolsa)
+            depositarPapel
+        mover
+      si(~(HayPapelEnLaEsquina))
+        si(HayPapelEnLaBolsa)
+          depositarPapel
+      Pos(1,(PosCa+1))
+    repetir 99
+      si(~(HayPapelEnLaEsquina))
+        si(HayPapelEnLaBolsa)
+          depositarPapel
+      mover
+    si(~(HayPapelEnLaEsquina))
+      si(HayPapelEnLaBolsa)
+        depositarPapel              
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

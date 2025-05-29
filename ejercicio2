@@ -1,0 +1,26 @@
+{Escriba un programa que le permita al robot recorrer la calle 50 desde la avenida 65
+hasta la avenida 23 depositando un papel en cada esquina. Debe avanzar hasta el
+final aunque durante el recorrido se quede sin papeles.}
+
+programa ejercicio1
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(65,50)
+    repetir 3
+      derecha
+    repetir 42
+      si(HayFlorEnLaBolsa)
+        depositarFlor
+      mover
+    si(HayFlorEnLaBolsa)
+      depositarFlor          
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

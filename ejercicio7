@@ -1,0 +1,24 @@
+{Escriba un programa que le permita al robot recorrer la avenida 10, depositando una
+flor en cada esquina. Si en algún momento del recorrido se queda sin flores en la
+bolsa, debe seguir caminando (sin depositar) hasta terminar la avenida.}
+
+programa ejercicio7
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(10,1)
+    repetir 99
+      si(HayFlorEnLaBolsa)
+        depositarFlor
+      mover
+    si(HayFlorEnLaBolsa)
+      depositarFlor       
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

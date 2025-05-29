@@ -1,0 +1,19 @@
+{1. Escriba un programa que le permita al robot recoger una flor de la esquina (2,84) si
+existe.}
+
+programa ejercicio1
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(2,82)
+    si(HayFlorEnLaEsquina)
+      tomarFlor      
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin
