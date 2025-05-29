@@ -1,0 +1,18 @@
+{Estructura de un programa que tiene un robot llamado R-info, el cual debe caminar dos cuadras a partir de la esquina (1,1)
+}
+
+programa ejemplo1
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    mover
+    mover
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

@@ -1,0 +1,18 @@
+{Programe al robot para que deposite en (1,1) todas las flores que lleva
+en su bolsa.}
+
+programa Cap2Ejemplo10
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    mientras HayFlorEnLaBolsa
+      depositarFlor  
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

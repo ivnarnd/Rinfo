@@ -1,0 +1,24 @@
+{Programe al robot para que recorra la avenida 15 desde la calle 12 a la calle 14 recogiendo, de ser posible, un papel en cada esquina.}
+
+programa ejemplo
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(15,12)
+    si(HayPapelEnLaEsquina)
+      tomarPapel
+    mover
+    si(HayPapelEnLaEsquina)
+      tomarPapel
+    mover
+    si(HayPapelEnLaEsquina)
+      tomarPapel
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

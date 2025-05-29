@@ -1,0 +1,24 @@
+{Programe al robot para que recorra la calle 4 dejando una flor en cada
+esquina.}
+
+programa ejemplo
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(1,4)
+    derecha
+    repetir 99
+      si(HayFlorEnLaBolsa)
+        depositarFlor
+      mover
+    si(HayFlorEnLaBolsa)
+      depositarFlor    
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

@@ -1,0 +1,21 @@
+{Escriba un programa que le permita al robot recorrer la avenida 7 hasta
+encontrar una esquina que no tiene flores. Al finalizar debe informar en qué calle quedó
+parado. Por simplicidad, suponga que esta esquina seguro existe..}
+
+programa Cap2Ejemplo9
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(7,1)
+    mientras HayFlorEnLaEsquina
+      mover
+    Informar(PosAv,PosCa)  
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

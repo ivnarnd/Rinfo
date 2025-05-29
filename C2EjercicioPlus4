@@ -1,0 +1,25 @@
+{Programe al robot para que intente recoger una flor de la esquina
+determinada por la calle 50 y la avenida 7. Solo si lo logra debe ir a la
+calle51 y avenida 8 e intentar recoger allí otra flor. Al finalizar debe
+informar en que esquina quedó parado.}
+
+programa ejemplo
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(7,50)
+    si(HayFlorEnLaEsquina)
+      tomarFlor
+      mover
+      si(HayFlorEnLaEsquina)
+        tomarFlor
+    Informar(PosAv,PosCa)
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

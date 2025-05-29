@@ -1,0 +1,26 @@
+{Programe al robot para que recorra la avenida 17 desde la calle
+31 hasta la calle 25.}
+
+programa ejemplo
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(17,31)
+    derecha
+    derecha
+    mover
+    mover
+    mover
+    mover
+    mover
+    mover
+    Informar(PosAv,PosCa)
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

@@ -1,0 +1,22 @@
+{Programe al robot para que camine desde (4,2) hasta (4,4) y luego
+hasta (7,4). El código en el ambiente del robot R-info sería de la forma:}
+
+programa Cap2Ejemplo12A
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(4,2)
+    repetir 2
+      mover
+    derecha
+    repetir 3
+      mover    
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

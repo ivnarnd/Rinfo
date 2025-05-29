@@ -1,0 +1,21 @@
+{Programe al robot para que recoja todas las flores y todos los papeles
+de la esquina determinada por la calle 75 y avenida 3.}
+
+programa Cap2Ejemplo11
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(3,75)
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+    mientras HayPapelEnLaEsquina
+      tomarPapel    
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin

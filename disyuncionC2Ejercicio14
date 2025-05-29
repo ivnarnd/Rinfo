@@ -1,0 +1,21 @@
+{el robot debe caminar desde la esquina (45,70) a la esquina (45,74)
+solamente en el caso que la esquina (45,70) no esté vacía, es decir, la esquina tiene al
+menos una flor o un papel.}
+
+programa Cap2Ejemplo14
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(45,70)
+    si(HayPapelEnLaEsquina | HayFlorEnLaEsquina)
+      repetir 4
+        mover       
+  fin
+variables
+  R_info: robot1
+comenzar
+  AsignarArea(R_info, ciudad)
+  Iniciar(R_info, 1,1)
+fin
