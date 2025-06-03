@@ -1,0 +1,56 @@
+programa ejemplo
+procesos
+  proceso recorrerCalle(E avAct:numero; E caAct:numero; E long:numero)
+  variables
+    cantP:numero
+  comenzar
+    cantP:=0
+    Pos(avAct,caAct)
+    repetir long-1
+      mientras(HayPapelEnLaEsquina)
+        tomarPapel
+        cantP:=cantP+1
+      mover
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+      cantP:= cantP+1
+    repetir cantP
+      depositarPapel      
+  fin
+  proceso recorrerAvenida(E numAv: numero)
+  comenzar
+    Pos(numAv, 1)
+    repetir 99
+      mover
+  fin
+areas
+  ciudad: AreaC (1,1,100,100)
+robots
+  robot robotFlorero
+  variables
+    cantF:numero
+    avAct:numero
+    caAct:numero
+    long : numero
+  comenzar
+    cantF:=0
+    avAct := PosAv
+    caAct := PosCa
+    si(avAct = 1)
+      long := 15
+    sino
+      long:= 30
+    derecha
+    repetir 2
+      recorrerCalle(avAct,caAct,long)
+      caAct := caAct + 5    
+  fin
+variables
+  R1: robotFlorero
+  R3: robotFlorero
+comenzar
+  AsignarArea(R1, ciudad)
+  AsignarArea(R3, ciudad)
+  Iniciar(R1, 1,75)
+  Iniciar(R3, 70,10)
+fin
