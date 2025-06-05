@@ -1,0 +1,117 @@
+{Dos robots compiten para ver cuál junta más flores. El primer robot recoge todas las
+flores de la avenida 1 entre las calles 1 y 10. El segundo robot recoge todas las flores
+de la avenida 2, entre las calles 11 y 20.
+Al finalizar el recorrido, el robot que recogió mayor cantidad de flores debe informar la
+diferencia de flores que obtuvo respecto al robot perdedor (el que obtuvo menos flores).
+Los robots inician en las esquinas (1, 1) y (2, 11) respectivamente.
+b. Modifique el ejercicio anterior, considerando que ahora habrá un robot fiscalizador,
+que será responsable de informar la diferencia de flores que obtuvo el ganador con
+respecto al perdedor. El robot fiscalizador se ubica en la esquina (2,1)
+c. Modifique el ejercicio anterior para que ahora participen 6 robots
+○ Robot 1: Avenida 1, entre las calles 1 y 10
+○ Robot 2: Avenida 2, entre las calles 11 y 20
+○ Robot 3: Avenida 3, entre las calles 21 y 30
+○ Robot 4: Avenida 4, entre las calles 31 y 40
+○ Robot 5: Avenida 5, entre las calles 41 y 50
+○ Robot 6: Avenida 6, entre las calles 51 y 60
+○ Fiscalizador: Avenida 2, calle 1
+El fiscalizador deberá informar la cantidad de flores que juntó el robot ganador
+d. Modifique el inciso anterior para que ahora el fiscalizador informe también, cuál fue el
+robot ganador.}
+
+programa ejemplo
+procesos
+  proceso recorrerAvenida(ES cantidad:numero)
+  comenzar
+    repetir 9
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        cantidad:=cantidad+1
+      mover
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cantidad:=cantidad+1  
+  fin
+areas
+  area1: AreaP (1,1,1,10)
+  area2: AreaP (2,11,2,20)
+  area3: AreaP (3,21,3,30)
+  area4: AreaP (4,31,4,40)
+  area5: AreaP (5,41,5,50)
+  area6: AreaP (6,51,6,60)
+  areaF: AreaP (2,1,2,1)
+robots
+  robot fiscalizador
+  variables
+    cant:numero
+    mayor:numero
+    idMayor:numero
+    id:numero
+  comenzar
+    EnviarMensaje(1,R1)
+    EnviarMensaje(2,R2)
+    EnviarMensaje(3,R3)
+    EnviarMensaje(4,R4)
+    EnviarMensaje(5,R5)
+    EnviarMensaje(6,R6)
+    mayor:=-1
+    id:=-1
+    repetir 6
+      RecibirMensaje(id,*)
+      si(id=1)
+        RecibirMensaje(cant,R1)
+      sino
+        si(id=2)
+          RecibirMensaje(cant,R2)
+        sino
+          si(id=3)
+            RecibirMensaje(cant,R3)
+          sino
+            si(id=4)
+              RecibirMensaje(cant,R4)
+            sino
+              si(id=5)
+                RecibirMensaje(cant,R5)
+              sino
+                RecibirMensaje(cant,R6)                   
+      si(cant > mayor)
+        mayor := cant
+        idMayor:=id
+    Informar(mayor)
+    Informar(idMayor)     
+  fin
+  robot florero
+  variables
+    cantidad:numero
+    id:numero
+  comenzar
+    cantidad := 0
+    RecibirMensaje(id,Fiscal)
+    recorrerAvenida(cantidad)
+    EnviarMensaje(id,Fiscal)
+    EnviarMensaje(cantidad,Fiscal)
+  fin
+variables
+  R1: florero
+  R2: florero
+  R3: florero
+  R4: florero
+  R5: florero
+  R6: florero
+  Fiscal:fiscalizador
+comenzar
+  AsignarArea(R1, area1)
+  AsignarArea(R2, area2)
+  AsignarArea(R3, area3)
+  AsignarArea(R4, area4)
+  AsignarArea(R5, area5)
+  AsignarArea(R6, area6)
+  AsignarArea(Fiscal,areaF)
+  Iniciar(R1, 1,1)
+  Iniciar(R2,2,11)
+  Iniciar(R3,3,21)
+  Iniciar(R4,4,31)
+  Iniciar(R5,5,41)
+  Iniciar(R6,6,51)
+  Iniciar(Fiscal,2,1)
+fin

@@ -1,0 +1,141 @@
+programa ejercicio4
+procesos
+  proceso limpiarEsquina
+  comenzar
+    mientras(HayPapelEnLaEsquina)
+      tomarPapel
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+  fin
+  proceso procesarMayor(E cant:numero; E id:numero;ES cantM:numero;ES idMayor:numero)
+  comenzar
+    si(cant>cantM)
+      idMayor:=id
+      cantM:=cant
+  fin   
+areas
+  cuadrado: AreaPC (25,25,75,75)
+  fiscalia: AreaP (1,1,1,1)
+  area1 : AreaP(25,1,25,1)
+  area2 : AreaP(30,1,30,1)
+  area3 : AreaP(35,1,35,1)
+  area4 : AreaP(40,1,40,1)
+robots
+  robot fiscalizador
+  variables
+    id:numero
+    mayor:numero
+    idMayor:numero
+    termino:boolean
+    cant1:numero
+    cant2:numero
+    cant3:numero
+    cant4:numero
+  comenzar
+    EnviarMensaje(1,R1)
+    EnviarMensaje(2,R2)
+    EnviarMensaje(3,R3)
+    EnviarMensaje(4,R4)
+    cant1:=0
+    cant2:=0
+    cant3:=0
+    cant4:=0
+    repetir 10
+      Random(id,1,4)
+      si(id=1)
+        EnviarMensaje(V,R1)
+        RecibirMensaje(termino,R1)
+        cant1:=cant1+1
+        procesarMayor(cant1,id,mayor,idMayor)
+      sino
+        si(id=2)
+          EnviarMensaje(V,R2)
+          RecibirMensaje(termino,R2)
+          cant2:=cant2+1
+          procesarMayor(cant2,id,mayor,idMayor)
+        sino
+          si(id=3)
+            EnviarMensaje(V,R3)
+            RecibirMensaje(termino,R3)
+            cant3:=cant3+1
+            procesarMayor(cant3,id,mayor,idMayor)
+          sino
+            EnviarMensaje(V,R4)
+            RecibirMensaje(termino,R4)
+            cant4:=cant4+1
+            procesarMayor(cant4,id,mayor,idMayor)
+    EnviarMensaje(F,R1)
+    EnviarMensaje(F,R2)
+    EnviarMensaje(F,R3)
+    EnviarMensaje(F,R4)
+    si(idMayor=1)
+      EnviarMensaje(V,R1)
+      EnviarMensaje(F,R2)
+      EnviarMensaje(F,R3)
+      EnviarMensaje(F,R4)
+    sino
+      si(idMayor=2)
+        EnviarMensaje(V,R2)
+        EnviarMensaje(F,R1)
+        EnviarMensaje(F,R3)
+        EnviarMensaje(F,R4)
+      sino
+        si(idMayor=3)
+          EnviarMensaje(V,R3)
+          EnviarMensaje(F,R1)
+          EnviarMensaje(F,R2)
+          EnviarMensaje(F,R4)
+        sino
+          EnviarMensaje(V,R4)
+          EnviarMensaje(F,R1)
+          EnviarMensaje(F,R2)
+          EnviarMensaje(F,R3)           
+  fin
+  robot robot1
+  variables
+    id:numero
+    av:numero
+    ca:numero
+    avIn:numero
+    caIn:numero
+    ingresar:boolean
+    gane:boolean
+  comenzar
+    avIn:=PosAv
+    caIn:=PosCa
+    RecibirMensaje(id,Fiscal)
+    RecibirMensaje(ingresar,Fiscal)
+    mientras(ingresar)
+      Random(av,25,75)
+      Random(ca,25,75)
+      Pos(av,ca)
+      limpiarEsquina
+      Pos(avIn,caIn)
+      EnviarMensaje(V,Fiscal)
+      RecibirMensaje(ingresar,Fiscal)
+    RecibirMensaje(gane,Fiscal)
+    si(gane)
+      Pos(50,50)     
+  fin
+variables
+  R1: robot1
+  R2: robot1
+  R3: robot1
+  R4: robot1
+  Fiscal:fiscalizador
+comenzar
+  AsignarArea(R1, cuadrado)
+  AsignarArea(R2, cuadrado)
+  AsignarArea(R3, cuadrado)
+  AsignarArea(R4, cuadrado)
+  AsignarArea(R1, area1)
+  AsignarArea(R2, area2)
+  AsignarArea(R3, area3)
+  AsignarArea(R4, area4)
+  AsignarArea(Fiscal, fiscalia)
+  Iniciar(R1, 25,1)
+  Iniciar(R2, 30,1)
+  Iniciar(R3, 35,1)
+  Iniciar(R4, 40,1)
+  Iniciar(Fiscal,1,1)
+fin

@@ -1,0 +1,52 @@
+{Dos robots compiten para ver cuál junta más flores. El primer robot recoge todas las
+flores de la avenida 1 entre las calles 1 y 10. El segundo robot recoge todas las flores
+de la avenida 2, entre las calles 11 y 20.
+Al finalizar el recorrido, el robot que recogió mayor cantidad de flores debe informar la
+diferencia de flores que obtuvo respecto al robot perdedor (el que obtuvo menos flores).
+Los robots inician en las esquinas (1, 1) y (2, 11) respectivamente.}
+
+programa ejemplo
+procesos
+  proceso recorrerAvenida(ES cantidad:numero)
+  comenzar
+    repetir 9
+      mientras(HayFlorEnLaEsquina)
+        tomarFlor
+        cantidad:=cantidad+1
+      mover
+    mientras(HayFlorEnLaEsquina)
+      tomarFlor
+      cantidad:=cantidad+1  
+  fin
+areas
+  area1: AreaP (1,1,1,10)
+  area2: AreaP (2,11,2,20)
+robots
+  robot florero
+  variables
+    cantidad:numero
+    cantRec:numero
+    diferencia:numero
+  comenzar
+    cantidad := 0
+    diferencia:=0
+    recorrerAvenida(cantidad)
+    si(PosAv=1)
+      EnviarMensaje(cantidad,R2)
+      RecibirMensaje(cantRec,R2)
+    sino
+      EnviarMensaje(cantidad,R1)
+      RecibirMensaje(cantRec,R1)
+    diferencia:= cantidad - cantRec
+    si(diferencia>0)
+      Informar(diferencia)    
+  fin
+variables
+  R1: florero
+  R2: florero
+comenzar
+  AsignarArea(R1, area1)
+  AsignarArea(R2, area2)
+  Iniciar(R1, 1,1)
+  Iniciar(R2,2,11)
+fin
